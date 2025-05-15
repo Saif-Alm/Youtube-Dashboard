@@ -1,11 +1,10 @@
 # YouTube Dashboard
 
-A modern Next.js YouTube dashboard application for browsing and watching videos with advanced playback features. This application provides a clean, responsive interface that works seamlessly across desktop and mobile devices.
+A modern Next.js YouTube dashboard application for browsing and watching videos. This application provides a clean, responsive interface that works seamlessly across desktop and mobile devices.
 
 ## Features
 
 - **Video Browsing**: Intuitive sidebar interface for browsing video collections
-- **Video Playback**: High-quality YouTube video playback in the main content area
 - **Video Trimming**: Set custom start and end points for precise video playback (minimum 5% duration between trim points)
 - **Search Functionality**: Quick search through videos by title and description
 - **Responsive Design**: Fully responsive layout that adapts to all screen sizes
@@ -13,8 +12,6 @@ A modern Next.js YouTube dashboard application for browsing and watching videos 
   - Space/K: Play/Pause
   - Arrow keys: Seek forward/backward
 - **Local Storage**: Persistent user preferences and trim settings
-
- 
 
 ## Technology Stack
 
@@ -33,7 +30,8 @@ A modern Next.js YouTube dashboard application for browsing and watching videos 
 │   ├── app/               # Next.js app directory
 │   │   ├── globals.css    # Global styles
 │   │   ├── layout.js      # Root layout component
-│   │   └── page.js        # Main page component
+│   │   ├── page.js        # Main page component
+│   │   └── favicon.ico    # Favicon
 │   │
 │   ├── components/        # React components
 │   │   ├── Sidebar.js     # Video list sidebar component
@@ -49,7 +47,9 @@ A modern Next.js YouTube dashboard application for browsing and watching videos 
 ├── public/                # Static assets
 ├── tailwind.config.js     # Tailwind CSS configuration
 ├── postcss.config.js      # PostCSS configuration
+├── postcss.config.mjs     # Alternative PostCSS configuration
 ├── next.config.mjs        # Next.js configuration
+├── jsconfig.json          # JavaScript configuration
 └── package.json           # Project dependencies
 ```
 
@@ -64,7 +64,7 @@ A modern Next.js YouTube dashboard application for browsing and watching videos 
 1. Clone the repository
    ```bash
    git clone https://github.com/Saif-Alm/Youtube-Dashboard.git
-   cd youtube-dash
+   cd youtube-dashboard
    ```
 
 2. Install dependencies
@@ -82,24 +82,6 @@ A modern Next.js YouTube dashboard application for browsing and watching videos 
    ```
 
 4. Open [http://localhost:3000](http://localhost:3000) in your browser
-
-## Build and Deployment
-
-### Building for Production
-
-```bash
-npm run build
-# or
-yarn build
-```
-
-### Running in Production
-
-```bash
-npm run start
-# or
-yarn start
-```
 
 ## Core Components
 
