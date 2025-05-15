@@ -1,0 +1,191 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@layer base {
+  :root {
+    --foreground-rgb: 0, 0, 0;
+    --background-rgb: 248, 249, 250;
+    --video-height: 60vh;
+    --sidebar-width: 320px; 
+    --sidebar-width-sm: 280px;
+    --header-height: 64px;
+  }
+
+  @media (max-width: 1024px) {
+    :root {
+      --video-height: 40vh;
+    }
+  }
+  
+  @media (max-width: 640px) {
+    :root {
+      --video-height: 35vh;
+      --sidebar-width-sm: 100%;
+    }
+  }
+
+  * {
+    @apply transition-colors duration-200;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+  @apply antialiased;
+}
+
+/* Improved scrollbar styles */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-light rounded-full;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-400 rounded-full hover:bg-gray-500;
+}
+
+/* Utility classes */
+
+
+
+
+@layer components {
+  .sidebar-scrollbar::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .sidebar-scrollbar::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  .sidebar-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 rounded-full hover:bg-primary;
+  }
+
+  /* Sidebar styles */
+  .sidebar-container {
+    width: var(--sidebar-width);
+    @apply shadow-soft bg-white z-40;
+  }
+  
+  @media (max-width: 1024px) {
+    .sidebar-container {
+      width: var(--sidebar-width-sm);
+    }
+  }
+  
+  .video-item {
+    @apply p-4 rounded-lg transition-all duration-200 hover:bg-gray-light border-l-2 border-transparent cursor-pointer my-2 relative;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+  
+  .video-item.active {
+    @apply bg-blue-50 border-l-2 border-primary;
+    box-shadow: 0 2px 8px rgba(26, 115, 232, 0.15);
+  }
+  
+  .video-title {
+    @apply font-medium text-sm whitespace-normal break-words text-dark;
+    max-width: 100%;
+    line-height: 1.4;
+  }
+  
+  .video-description {
+    @apply text-xs text-gray-500 mt-2 whitespace-pre-wrap break-words;
+    max-width: 100%;
+    line-height: 1.5;
+  }
+  
+  .video-play-icon {
+    @apply flex items-center justify-center bg-primary text-white rounded-full p-1.5 mb-2 transition-transform duration-200;
+    transform: scale(1);
+    box-shadow: 0 2px 5px rgba(26, 115, 232, 0.3);
+  }
+  
+  .video-item:hover .video-play-icon {
+    transform: scale(1.15);
+  }
+  
+  .video-item:hover {
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  }
+  
+  /* Video player styles */
+  .video-player-wrapper {
+    @apply relative w-full overflow-hidden rounded-xl shadow-medium bg-black;
+    min-height: var(--video-height, 60vh);
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .video-controls {
+    @apply px-4 py-2 bg-white;
+  }
+  
+  .video-progress-container {
+    @apply relative h-14 cursor-pointer;
+    margin: 0 12px;
+    padding: 0 12px;
+  }
+  
+  .video-progress-background {
+    @apply absolute w-full h-4 bg-gray-200 rounded-full top-4;
+  }
+  
+  .video-progress-fill {
+    @apply absolute h-4 rounded-full top-4;
+    z-index: 10;
+  }
+  
+  .video-trim-bar {
+    @apply absolute h-4 bg-primary rounded-full cursor-pointer opacity-50;
+    top: 1rem;
+    z-index: 5;
+  }
+  
+  .video-trim-handle {
+    @apply absolute w-6 h-6 rounded-full cursor-ew-resize bg-white border-2 border-primary shadow-md;
+    top: 0.75rem;
+    transform: translateX(-50%);
+    z-index: 20;
+  }
+  
+  .video-trim-handle:hover, .video-trim-handle:active {
+    @apply bg-primary border-white;
+  }
+
+  .video-trim-handle::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 6px;
+    height: 6px;
+    @apply bg-primary rounded-full;
+  }
+  
+  .video-trim-handle:hover::after {
+    @apply bg-white;
+  }
+  
+  .video-control-button {
+    @apply p-2 rounded-full transition-all duration-200 hover:bg-gray-light active:scale-95;
+  }
+  
+  /* Search input */
+  .search-input {
+    @apply w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all bg-gray-50;
+  }
+  
+  /* Custom focus styles */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-1;
+  }
+}
